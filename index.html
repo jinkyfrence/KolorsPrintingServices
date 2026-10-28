@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Kolors Printing Services: vibrant, high-quality custom printing for individuals, events, small businesses and brands.">
+<title>Kolors Printing Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: white "paper" sheets alternating with dark-navy "press" bands; CMYK used only as ink accents, swatches and a press-control strip. */
+:root{
+  --navy:#0E1A3A;      /* K plate / dark sections */
+  --ink:#16213F;       /* body text */
+  --muted:#56607E;     /* secondary text */
+  --on-navy:#C3CBE2;   /* secondary text on navy */
+  --paper:#FFFFFF;
+  --paper-2:#F3F5FA;   /* cool off-white, tinted toward navy */
+  --line:#D9DFEB;
+  --c:#00A3E0;         /* cyan */
+  --m:#D9007A;         /* magenta, also main CTA */
+  --m-deep:#B30065;
+  --y:#FFD400;         /* yellow */
+  --font-display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --font-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --radius:14px;
+  --wrap:1180px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.2vw,3rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:600;letter-spacing:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
+section{padding-block:clamp(64px,9vw,112px)}
+.eyebrow{font:500 .78rem/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:10px}
+.eyebrow .dots{display:inline-flex;gap:4px}
+.eyebrow .dots i{width:8px;height:8px;border-radius:50%;display:block}
+.sec-head{display:grid;gap:14px;max-width:640px;margin-bottom:48px}
+.sec-head p{color:var(--muted);font-size:1.08rem}
+.dark .sec-head p,.dark .eyebrow{color:var(--on-navy)}
+:focus-visible{outline:3px solid var(--c);outline-offset:3px;border-radius:6px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;font:700 1rem/1 var(--font-body);text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s ease,background .2s ease,box-shadow .2s ease,color .2s ease}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--m);color:#fff;box-shadow:0 6px 18px -6px rgba(217,0,122,.55)}
+.btn-primary:hover{background:var(--m-deep);transform:translateY(-2px)}
+.btn-ghost{border-color:var(--navy);color:var(--navy);background:transparent}
+.btn-ghost:hover{background:var(--navy);color:#fff;transform:translateY(-2px)}
+.dark .btn-ghost{border-color:#fff;color:#fff}
+.dark .btn-ghost:hover{background:#fff;color:var(--navy)}
+.btn-yellow{background:var(--y);color:var(--navy)}
+.btn-yellow:hover{background:#fff;transform:translateY(-2px)}
+
+/* Header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--navy);line-height:1.05}
+.logo-mark{display:grid;grid-template-columns:repeat(2,11px);gap:3px;flex:none}
+.logo-mark i{width:11px;height:11px;border-radius:50%;display:block}
+.logo small{display:block;font:500 .66rem/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink);position:relative;padding-block:6px}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--m);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{padding:11px 20px;font-size:.92rem}
+.menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--navy)}
+.menu-btn svg{width:28px;height:28px}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(48px,7vw,96px)}
+.hero::before{content:"";position:absolute;right:-120px;top:-120px;width:620px;height:620px;
+  background:radial-gradient(circle,var(--c) 1.6px,transparent 1.8px) 0 0/14px 14px;
+  -webkit-mask-image:radial-gradient(circle at 70% 30%,#000 0,transparent 65%);mask-image:radial-gradient(circle at 70% 30%,#000 0,transparent 65%);opacity:.35;pointer-events:none}
+.hero::after{content:"";position:absolute;left:-160px;bottom:-200px;width:460px;height:460px;
+  background:radial-gradient(circle,var(--m) 1.4px,transparent 1.6px) 0 0/12px 12px;
+  -webkit-mask-image:radial-gradient(circle,#000 0,transparent 62%);mask-image:radial-gradient(circle,#000 0,transparent 62%);opacity:.22;pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero-copy{display:grid;gap:24px;min-width:0}
+.hero h1{font-size:clamp(2.7rem,6.4vw,5rem);font-weight:800;color:var(--navy)}
+.hero h1 .full{display:inline-block;position:relative;padding-bottom:.12em}
+.hero h1 .full::after{content:"";position:absolute;left:0;right:0;bottom:0;height:.14em;border-radius:3px;
+  background:linear-gradient(90deg,var(--c) 0 25%,var(--m) 25% 50%,var(--y) 50% 75%,var(--navy) 75% 100%)}
+.hero-copy > p{font-size:1.15rem;color:var(--muted);max-width:54ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.trust{font-weight:600;color:var(--navy);display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.95rem}
+.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust span::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
+.trust span:nth-child(2)::before{background:var(--m)}
+.trust span:nth-child(3)::before{background:var(--y)}
+
+/* Photo placeholders: replace the label with <img src="..." alt="..."> inside .ph */
+.ph{position:relative;display:grid;place-items:center;text-align:center;gap:10px;padding:24px;border-radius:var(--radius);
+  background:
+    linear-gradient(var(--paper-2),var(--paper-2)) padding-box,
+    repeating-linear-gradient(135deg,var(--c) 0 10px,var(--m) 10px 20px,var(--y) 20px 30px,var(--navy) 30px 40px) border-box;
+  border:2px dashed transparent;color:var(--muted);overflow:hidden;max-width:100%}
+.ph .ph-inner{display:grid;justify-items:center;gap:10px;max-width:28ch}
+.ph svg{width:38px;height:38px;color:var(--navy);opacity:.7}
+.ph strong{font:600 .95rem/1.35 var(--font-body);color:var(--ink)}
+.ph em{font:500 .72rem/1.3 var(--font-mono);font-style:normal;letter-spacing:.06em;text-transform:uppercase}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph:has(img){border:0;background:var(--paper-2);padding:0}
+.t-card .ph img{object-fit:contain;background:#fff}
+.hero-ph{aspect-ratio:4/4.3;width:100%}
+.hero-art{position:relative;min-width:0}
+.swatch-stack{position:absolute;left:-22px;bottom:28px;display:grid;gap:6px;z-index:2}
+.swatch-stack i{display:block;width:58px;height:18px;border-radius:4px;box-shadow:0 4px 10px -4px rgba(14,26,58,.4)}
+
+/* Press control strip */
+.press-strip{display:grid;grid-template-columns:repeat(16,1fr);height:14px}
+.press-strip i:nth-child(4n+1){background:var(--c)}
+.press-strip i:nth-child(4n+2){background:var(--m)}
+.press-strip i:nth-child(4n+3){background:var(--y)}
+.press-strip i:nth-child(4n+4){background:var(--navy)}
+.press-strip i:nth-child(8n+5),.press-strip i:nth-child(8n+6),.press-strip i:nth-child(8n+7),.press-strip i:nth-child(8n+8){opacity:.55}
+
+/* Services */
+.services{background:var(--paper-2)}
+.svc-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+.svc-grid .svc{flex:0 1 calc((100% - 36px)/3)}
+.svc{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;display:grid;gap:12px;align-content:start;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;min-width:0}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 34px -20px rgba(14,26,58,.35);border-color:transparent}
+.svc-icon{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.svc-icon svg{width:26px;height:26px}
+.svc:nth-child(4n+1) .svc-icon{background:var(--c)}
+.svc:nth-child(4n+2) .svc-icon{background:var(--m)}
+.svc:nth-child(4n+3) .svc-icon{background:var(--y);color:var(--navy)}
+.svc:nth-child(4n+4) .svc-icon{background:var(--navy)}
+.svc p{color:var(--muted);font-size:.97rem}
+.svc-note{margin-top:28px;font-size:.92rem;color:var(--muted);font-style:italic}
+
+/* Why choose */
+.dark{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.dark h2{color:#fff}
+.why::before{content:"";position:absolute;right:-80px;bottom:-80px;width:420px;height:420px;
+  background:radial-gradient(circle,var(--y) 1.5px,transparent 1.7px) 0 0/13px 13px;
+  -webkit-mask-image:radial-gradient(circle,#000 0,transparent 65%);mask-image:radial-gradient(circle,#000 0,transparent 65%);opacity:.25;pointer-events:none}
+.why-grid{position:relative;display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:start}
+.why-about{display:grid;gap:22px;min-width:0}
+.why-about p{color:var(--on-navy);font-size:1.08rem}
+.benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.benefit{border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:24px;display:grid;gap:12px;background:rgba(255,255,255,.03);transition:background .25s ease,transform .25s ease}
+.benefit:hover{background:rgba(255,255,255,.07);transform:translateY(-3px)}
+.plate{display:flex;align-items:center;gap:10px;font:500 .72rem/1 var(--font-mono);letter-spacing:.1em;color:var(--on-navy)}
+.plate i{width:26px;height:26px;border-radius:6px;display:block}
+.benefit p{color:var(--on-navy);font-size:.96rem}
+
+/* Gallery */
+.gallery-grid{columns:4 240px;column-gap:18px}
+.g-item{break-inside:avoid;margin:0 0 18px;display:grid;gap:8px}
+.g-item .ph{width:100%}
+.g-item figcaption{font-size:.9rem;color:var(--muted);padding-inline:4px}
+.r-tall{aspect-ratio:3/4}.r-sq{aspect-ratio:1/1}.r-wide{aspect-ratio:4/3}.r-xtall{aspect-ratio:2/3}
+
+/* Testimonials */
+.testimonials{background:var(--paper-2)}
+.t-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+.t-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:grid;gap:14px;align-content:start;min-width:0}
+.t-card .ph{aspect-ratio:9/12;width:100%}
+.t-meta{display:grid;gap:2px}
+.t-meta b{font-size:1rem;color:var(--ink)}
+.t-meta span{font:500 .74rem/1.4 var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--m)}
+.t-card blockquote{margin:0;color:var(--muted);font-size:.96rem;border-left:3px solid var(--c);padding-left:12px}
+.t-add{text-decoration:none;border:2px dashed var(--line);border-radius:var(--radius);display:grid;place-items:center;text-align:center;padding:28px;gap:12px;color:var(--muted);background:transparent;font:inherit;cursor:pointer;transition:border-color .2s ease,color .2s ease}
+.t-add:hover{border-color:var(--m);color:var(--m)}
+.t-add svg{width:34px;height:34px}
+.t-add b{display:block;color:inherit;font-size:1rem}
+
+/* How to order */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;list-style:none;margin:0 0 44px;padding:0;counter-reset:step}
+.step{position:relative;padding:28px 22px 24px;border-radius:var(--radius);border:1px solid var(--line);background:var(--paper);display:grid;gap:12px;align-content:start}
+.step-num{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 1.15rem/1 var(--font-display);color:#fff}
+.step:nth-child(1) .step-num{background:var(--c)}
+.step:nth-child(2) .step-num{background:var(--m)}
+.step:nth-child(3) .step-num{background:var(--y);color:var(--navy)}
+.step:nth-child(4) .step-num{background:var(--navy)}
+.step p{color:var(--muted);font-size:.96rem}
+.step:not(:last-child)::after{content:"";position:absolute;top:49px;right:-18px;width:18px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 4px,transparent 4px 7px)}
+.order-cta{display:flex;justify-content:center}
+
+/* Contact */
+.contact-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-list{list-style:none;padding:0;margin:28px 0 30px;display:grid;gap:14px}
+.contact-list li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);min-width:0}
+.contact-list .ci{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.08)}
+.contact-list .ci svg{width:22px;height:22px}
+.contact-list li:nth-child(1) .ci{color:var(--c)}
+.contact-list li:nth-child(2) .ci{color:var(--m)}
+.contact-list li:nth-child(3) .ci{color:var(--y)}
+.contact-list li:nth-child(4) .ci{color:var(--c)}
+.contact-list li:nth-child(5) .ci{color:var(--m)}
+.contact-list small{display:block;font:500 .7rem/1.2 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--on-navy)}
+.contact-list .val{font-weight:600;font-size:1.02rem;overflow-wrap:anywhere;color:#fff;text-decoration:none}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px}
+.map-ph{aspect-ratio:4/3.4;width:100%;background:
+    linear-gradient(#18264D,#18264D) padding-box,
+    repeating-linear-gradient(135deg,var(--c) 0 10px,var(--m) 10px 20px,var(--y) 20px 30px,#fff 30px 40px) border-box;color:var(--on-navy)}
+.map-ph svg{color:#fff}
+.map-ph strong{color:#fff}
+
+/* Footer */
+.site-footer{background:#0A1430;color:var(--on-navy);padding-block:36px calc(36px + env(safe-area-inset-bottom,0px))}
+.foot{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between}
+.foot .logo{color:#fff}
+.foot .logo small{color:var(--on-navy)}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.95rem}
+.foot-links a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+.foot-links a:hover{border-color:var(--y)}
+.copy{width:100%;font-size:.86rem;padding-top:18px;border-top:1px solid rgba(255,255,255,.1)}
+
+/* Packaging showcase */
+.boxes-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:48px}
+.boxes-copy{display:grid;gap:20px;min-width:0}
+.boxes-copy > p{color:var(--muted);font-size:1.08rem;max-width:52ch}
+.box-points{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.box-points li{display:flex;gap:12px;align-items:center;font-weight:600;color:var(--navy)}
+.box-points li::before{content:"";width:22px;height:22px;flex:none;border-radius:6px;background:var(--c) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E") center/14px no-repeat}
+.box-points li:nth-child(2)::before{background-color:var(--m)}
+.box-points li:nth-child(3)::before{background-color:var(--navy)}
+.box-art{position:relative;min-width:0;display:grid;place-items:center}
+.box-art::before{content:"";position:absolute;inset:4% 6%;border-radius:50%;
+  background:radial-gradient(circle,var(--m) 1.4px,transparent 1.6px) 0 0/12px 12px;
+  -webkit-mask-image:radial-gradient(circle,#000 0,transparent 68%);mask-image:radial-gradient(circle,#000 0,transparent 68%);opacity:.22}
+.box-art svg{position:relative;width:100%;max-width:470px;height:auto;overflow:visible}
+.bx-top{fill:var(--y)}.bx-left{fill:var(--c)}.bx-right{fill:var(--m)}
+.bx-edge{fill:none;stroke:var(--navy);stroke-width:3;stroke-linejoin:round}
+.bx-tape{fill:#fff;opacity:.85}
+.bx-label{fill:#fff}
+.bx-line{stroke:#fff;stroke-width:3;stroke-linecap:round;opacity:.9}
+.bx-dim{stroke:var(--navy);stroke-width:1.6;fill:none}
+.bx-dim-dash{stroke:var(--navy);stroke-width:1.2;stroke-dasharray:4 4;fill:none;opacity:.5}
+.bx-txt{font:500 13px var(--font-mono);fill:var(--navy);letter-spacing:.08em}
+.bx-badge{fill:var(--navy)}
+.bx-badge-t{font:800 22px var(--font-display);fill:#fff}
+.bx-badge-s{font:500 10px var(--font-mono);fill:var(--y);letter-spacing:.12em}
+.bx-shadow{fill:var(--navy);opacity:.1}
+.box-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.box-gallery .g-item{margin:0}
+.box-gallery .ph{aspect-ratio:1/1;width:100%}
+@media (max-width:880px){.boxes-grid{grid-template-columns:1fr;gap:32px}}
+@media (max-width:560px){.box-gallery{grid-template-columns:1fr}.boxes-copy .btn{width:100%}}
+
+/* Floating quote button on phones */
+.float-cta{display:none}
+
+/* Responsive */
+@media (max-width:1024px){
+  .svc-grid .svc{flex-basis:calc((100% - 18px)/2)}
+  .t-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step::after{display:none}
+  .why-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:880px){
+  .nav-links,.nav-cta{display:none}
+  .menu-btn{display:block}
+  .site-header.open .nav-links{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 20px 18px;box-shadow:0 20px 30px -20px rgba(14,26,58,.35)}
+  .site-header.open .nav-links a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}
+  .site-header.open .nav-links li:last-child a{border-bottom:0}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-ph{aspect-ratio:4/3.2}
+  .swatch-stack{left:auto;right:14px;bottom:-14px;grid-auto-flow:column}
+  .swatch-stack i{width:40px;height:14px}
+  .float-cta{display:inline-flex;position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60}
+  .site-footer{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .t-grid,.steps,.benefits{grid-template-columns:1fr}
+  .svc-grid .svc{flex-basis:100%}
+  .hero-actions .btn,.contact-actions .btn,.order-cta .btn{width:100%}
+  .logo{font-size:1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<!-- Shared icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="reg" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><circle cx="20" cy="20" r="10"/><path d="M20 2v36M2 20h36"/><circle cx="20" cy="20" r="4" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.1A8.5 8.5 0 1 1 21 12z"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+</svg>
+
+<header class="site-header" id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#home" aria-label="Kolors Printing Services home">
+      <span class="logo-mark" aria-hidden="true"><i style="background:var(--c)"></i><i style="background:var(--m)"></i><i style="background:var(--y)"></i><i style="background:var(--navy)"></i></span>
+      <span>Kolors<small>Printing Services</small></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#how-to-order">How to Order</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-primary nav-cta" href="#contact">Request a Quote</a>
+    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dots" aria-hidden="true"><i style="background:var(--c)"></i><i style="background:var(--m)"></i><i style="background:var(--y)"></i><i style="background:var(--navy)"></i></span>Custom printing for people, events &amp; brands</span>
+      <h1>Your Ideas, Printed in <span class="full">Full Color.</span></h1>
+      <p>From business cards and stickers to tarpaulins and custom prints, Kolors Printing Services delivers vibrant, high-quality materials made for your brand and your moments.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Request a Quote <svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#services">View Our Services</a>
+      </div>
+      <div class="trust"><span>Quality Prints</span><span>Vibrant Colors</span><span>Reliable Service</span></div>
+    </div>
+    <div class="hero-art">
+      <!-- EDIT: put <img src="your-photo.jpg" alt="Describe the product"> inside this .ph box -->
+      <div class="ph hero-ph">
+        <div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Featured Product Photo Here</strong><em>Recommended: 1200 × 1300 px</em></div>
+      </div>
+      <div class="swatch-stack" aria-hidden="true"><i style="background:var(--c)"></i><i style="background:var(--m)"></i><i style="background:var(--y)"></i><i style="background:var(--navy)"></i></div>
+    </div>
+  </div>
+</section>
+
+<div class="press-strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Services</span>
+      <h2>Print Solutions for Every Idea</h2>
+      <p>Whether it is for your business, event, or personal project, we help bring your ideas to life.</p>
+    </div>
+    <!-- EDIT: change titles/descriptions freely; delete a whole <article> to remove a service -->
+    <div class="svc-grid">
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="12" rx="1"/><circle cx="4.5" cy="7.5" r=".6" fill="currentColor"/><circle cx="19.5" cy="7.5" r=".6" fill="currentColor"/><circle cx="4.5" cy="14.5" r=".6" fill="currentColor"/><circle cx="19.5" cy="14.5" r=".6" fill="currentColor"/><path d="M8 21l4-4 4 4"/></svg></div>
+        <h3>Tarpaulin Printing</h3>
+        <p>Big, bold banners for store signage, events, celebrations and announcements.</p>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h7z"/><path d="M12 20v-6a2 2 0 0 1 2-2h6"/></svg></div>
+        <h3>Stickers and Labels</h3>
+        <p>Product labels, packaging stickers and custom die-cut designs that make your brand stand out.</p>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/><path d="M7.5 5.5l9 5"/></svg></div>
+        <h3>Custom Printed Boxes</h3>
+        <p>Big printed boxes in small runs, from 1 piece up to 100 pcs. Good for product launches, gift sets and samples.</p>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M5 16c.6-1.4 1.7-2 3-2s2.4.6 3 2M14 10h5M14 13h4"/></svg></div>
+        <h3>Business Cards</h3>
+        <p>Clean, professional cards that leave a good first impression.</p>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5l6-2 6 2 6-2v16l-6 2-6-2-6 2z"/><path d="M9 3v16M15 5v16"/></svg></div>
+        <h3>Flyers and Brochures</h3>
+        <p>Promote your products, services and events with eye-catching printed materials.</p>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l-5 3 2 4 2-1v12h10V9l2 1 2-4-5-3c0 2-1.8 3-4 3S8 5 8 3z"/></svg></div>
+        <h3>Custom Merchandise</h3>
+        <p>Personalized shirts, mugs and giveaways for your team, brand or event.</p>
+      </article>
+    </div>
+    <p class="svc-note">Services may be customized based on your available products.</p>
+  </div>
+</section>
+
+<!-- ============ PACKAGING / BOXES ============ -->
+<section id="boxes">
+  <div class="wrap">
+    <div class="boxes-grid">
+      <div class="boxes-copy">
+        <span class="eyebrow">Packaging</span>
+        <h2>Custom Boxes, Even for Small Orders</h2>
+        <p>Need just one box or up to 100? We print big custom boxes in small runs, so you can package your products, gift sets and samples without ordering thousands.</p>
+        <ul class="box-points">
+          <li>Order from 1 pc up to 100 pcs</li>
+          <li>Big box sizes for products and gift sets</li>
+          <li>Printed with your own design</li>
+        </ul>
+        <div><a class="btn btn-primary" href="#contact">Ask for a Box Quote <svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
+      </div>
+      <div class="box-art" aria-hidden="true">
+        <svg viewBox="0 0 440 380">
+          <defs>
+            <pattern id="halftone" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="4.5" cy="4.5" r="1.6" fill="#fff" opacity=".35"/></pattern>
+          </defs>
+          <ellipse class="bx-shadow" cx="210" cy="338" rx="150" ry="22"/>
+          <!-- faces -->
+          <polygon class="bx-top" points="210,40 350,110 210,180 70,110"/>
+          <polygon class="bx-left" points="70,110 210,180 210,320 70,250"/>
+          <polygon class="bx-right" points="210,180 350,110 350,250 210,320"/>
+          <polygon points="210,180 350,110 350,250 210,320" fill="url(#halftone)"/>
+          <!-- tape across top -->
+          <polygon class="bx-tape" points="128,69 150,58 292,129 270,140"/>
+          <!-- label on right face -->
+          <polygon class="bx-label" points="238,206 322,164 322,214 238,256"/>
+          <line class="bx-line" x1="98" y1="160" x2="182" y2="202" style="stroke:#fff"/>
+          <line class="bx-line" x1="98" y1="178" x2="160" y2="209" style="stroke:#fff"/>
+          <line x1="250" y1="218" x2="310" y2="188" style="stroke:var(--navy);stroke-width:4;stroke-linecap:round"/>
+          <line x1="250" y1="234" x2="292" y2="213" style="stroke:var(--m);stroke-width:4;stroke-linecap:round"/>
+          <!-- edges -->
+          <polygon class="bx-edge" points="210,40 350,110 350,250 210,320 70,250 70,110"/>
+          <polyline class="bx-edge" points="70,110 210,180 350,110"/>
+          <line class="bx-edge" x1="210" y1="180" x2="210" y2="320"/>
+          <!-- dimension marks -->
+          <line class="bx-dim-dash" x1="350" y1="110" x2="390" y2="110"/>
+          <line class="bx-dim-dash" x1="350" y1="250" x2="390" y2="250"/>
+          <line class="bx-dim" x1="382" y1="112" x2="382" y2="248"/>
+          <line class="bx-dim" x1="376" y1="112" x2="388" y2="112"/><line class="bx-dim" x1="376" y1="248" x2="388" y2="248"/>
+          <text class="bx-txt" x="394" y="185">H</text>
+          <line class="bx-dim" x1="58" y1="268" x2="192" y2="335"/>
+          <line class="bx-dim" x1="55" y1="274" x2="62" y2="262"/><line class="bx-dim" x1="189" y1="341" x2="196" y2="329"/>
+          <text class="bx-txt" x="104" y="322">L</text>
+          <line class="bx-dim" x1="228" y1="335" x2="362" y2="268"/>
+          <line class="bx-dim" x1="224" y1="329" x2="231" y2="341"/><line class="bx-dim" x1="358" y1="262" x2="365" y2="274"/>
+          <text class="bx-txt" x="306" y="322">W</text>
+          <!-- badge -->
+          <circle class="bx-badge" cx="88" cy="58" r="46"/>
+          <circle cx="88" cy="58" r="40" fill="none" stroke="var(--y)" stroke-width="1.5" stroke-dasharray="3 4"/>
+          <text class="bx-badge-t" x="88" y="62" text-anchor="middle">1–100</text>
+          <text class="bx-badge-s" x="88" y="80" text-anchor="middle">PCS</text>
+        </svg>
+      </div>
+    </div>
+    <!-- EDIT: put your box mockup or actual box photo <img> inside each .ph, then update the caption -->
+    <div class="box-gallery">
+      <figure class="g-item"><div class="ph"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Box Mockup or Actual Box Photo Here</strong></div></div><figcaption>Caption: box type or product</figcaption></figure>
+      <figure class="g-item"><div class="ph"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Box Mockup or Actual Box Photo Here</strong></div></div><figcaption>Caption: box type or product</figcaption></figure>
+      <figure class="g-item"><div class="ph"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Box Mockup or Actual Box Photo Here</strong></div></div><figcaption>Caption: box type or product</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="dark why" id="why">
+  <div class="wrap why-grid">
+    <div class="why-about">
+      <span class="eyebrow">About us</span>
+      <h2>Why Choose Kolors?</h2>
+      <!-- EDIT: replace with your own story (when you started, who you serve, what you're proud of) -->
+      <p>Kolors Printing Services is a local print shop that helps individuals, events, small businesses and brands turn their ideas into printed materials they are proud to share. We care about the details, from color to finishing, so every order looks the way you imagined it.</p>
+      <div><a class="btn btn-yellow" href="#contact">Request a Quote <svg aria-hidden="true"><use href="#arrow"/></svg></a></div>
+    </div>
+    <div class="benefits">
+      <div class="benefit"><span class="plate"><i style="background:var(--c)"></i>C 100</span><h3>Vibrant, High-Quality Prints</h3><p>Rich colors and sharp details on every piece we print.</p></div>
+      <div class="benefit"><span class="plate"><i style="background:var(--m)"></i>M 100</span><h3>Friendly and Reliable Service</h3><p>We answer your questions and keep you updated from quote to pickup.</p></div>
+      <div class="benefit"><span class="plate"><i style="background:var(--y)"></i>Y 100</span><h3>Fast Turnaround Time</h3><p>We work to get your prints done on schedule, even for tight deadlines.</p></div>
+      <div class="benefit"><span class="plate"><i style="background:#fff"></i>K 100</span><h3>Affordable Options for Every Need</h3><p>Choices that fit personal projects, events and growing businesses.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Gallery</span>
+      <h2>Our Recent Prints</h2>
+      <p>See how we turn creative ideas into quality printed products.</p>
+    </div>
+    <!-- EDIT: put <img src="..." alt="..."> inside each .ph, then replace the caption text -->
+    <div class="gallery-grid">
+      <figure class="g-item"><div class="ph r-tall"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Actual Finished Product Photo Here</strong></div></div><figcaption>Caption: product name or project type</figcaption></figure>
+      <figure class="g-item"><div class="ph r-sq"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Actual Finished Product Photo Here</strong></div></div><figcaption>Caption: product name or project type</figcaption></figure>
+      <figure class="g-item"><div class="ph r-wide"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Actual Finished Product Photo Here</strong></div></div><figcaption>Caption: product name or project type</figcaption></figure>
+      <figure class="g-item"><div class="ph r-xtall"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Actual Finished Product Photo Here</strong></div></div><figcaption>Caption: product name or project type</figcaption></figure>
+      <figure class="g-item"><div class="ph r-sq"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Actual Finished Product Photo Here</strong></div></div><figcaption>Caption: product name or project type</figcaption></figure>
+      <figure class="g-item"><div class="ph r-tall"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Actual Finished Product Photo Here</strong></div></div><figcaption>Caption: product name or project type</figcaption></figure>
+      <figure class="g-item"><div class="ph r-wide"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Actual Finished Product Photo Here</strong></div></div><figcaption>Caption: product name or project type</figcaption></figure>
+      <figure class="g-item"><div class="ph r-sq"><div class="ph-inner"><svg aria-hidden="true"><use href="#reg"/></svg><strong>Add Actual Finished Product Photo Here</strong></div></div><figcaption>Caption: product name or project type</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Testimonials</span>
+      <h2>What Our Clients Say</h2>
+      <p>Your feedback inspires us to keep creating prints you will love.</p>
+    </div>
+    <!-- EDIT: put a client message screenshot <img> inside each .ph, then fill in name, product and text -->
+    <div class="t-grid">
+      <article class="t-card">
+        <div class="ph"><div class="ph-inner"><svg aria-hidden="true"><use href="#chat"/></svg><strong>Client Screenshot / Client Photo Placeholder</strong></div></div>
+        <div class="t-meta"><b>[Client Name]</b><span>[Project or Product Ordered]</span></div>
+        <blockquote>[Testimonial text: paste the client's actual message here.]</blockquote>
+      </article>
+      <article class="t-card">
+        <div class="ph"><div class="ph-inner"><svg aria-hidden="true"><use href="#chat"/></svg><strong>Client Screenshot / Client Photo Placeholder</strong></div></div>
+        <div class="t-meta"><b>[Client Name]</b><span>[Project or Product Ordered]</span></div>
+        <blockquote>[Testimonial text: paste the client's actual message here.]</blockquote>
+      </article>
+      <article class="t-card">
+        <div class="ph"><div class="ph-inner"><svg aria-hidden="true"><use href="#chat"/></svg><strong>Client Screenshot / Client Photo Placeholder</strong></div></div>
+        <div class="t-meta"><b>[Client Name]</b><span>[Project or Product Ordered]</span></div>
+        <blockquote>[Testimonial text: paste the client's actual message here.]</blockquote>
+      </article>
+      <!-- EDIT: copy one <article class="t-card"> above and paste it here to add more reviews -->
+      <a class="t-add" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        <span><b>Add More Client Reviews</b>Ordered from us? Send us your feedback.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW TO ORDER ============ -->
+<section id="how-to-order">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How to order</span>
+      <h2>Simple Ordering Process</h2>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="step-num">1</span><h3>Send Your Design or Idea</h3><p>Message us your print-ready file and tell us the size, material and quantity you need.</p></li>
+      <li class="step"><span class="step-num">2</span><h3>Receive Your Quote</h3><p>We'll reply with the price and options for size, material and quantity.</p></li>
+      <li class="step"><span class="step-num">3</span><h3>Approve Details and Payment</h3><p>Check your final layout, confirm the details, and settle the payment.</p></li>
+      <li class="step"><span class="step-num">4</span><h3>Production, Pickup, or Delivery</h3><p>We print your order, then you pick it up or we arrange delivery.</p></li>
+    </ol>
+    <div class="order-cta"><a class="btn btn-primary" data-link="facebook" href="#contact"><svg aria-hidden="true"><use href="#chat"/></svg>Message Us to Get Started</a></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="dark" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Contact</span>
+      <h2 style="margin-top:14px">Let's Print Something Great</h2>
+      <p style="color:var(--on-navy);font-size:1.08rem;margin-top:14px">Ready to place an order or ask for a quotation? Send us a message today.</p>
+      <ul class="contact-list">
+        <li><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-6.5-8-13a8 8 0 0 1 16 0c0 6.5-8 13-8 13z"/><circle cx="12" cy="9" r="3"/></svg></span><div><small>Address</small><span class="val" data-info="address">[Insert Business Address]</span></div></li>
+        <li><span class="ci"><svg><use href="#phone"/></svg></span><div><small>Contact Number</small><span class="val" data-info="phone">[Insert Contact Number]</span></div></li>
+        <li><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><div><small>Email</small><span class="val" data-info="email">[Insert Email Address]</span></div></li>
+        <li><span class="ci"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7H16l.6-4h-3.1V9c0-.6.4-1 1-1z"/></svg></span><div><small>Facebook Page</small><span class="val" data-info="facebook">[Insert Facebook Page Link]</span></div></li>
+        <li><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><small>Business Hours</small><span class="val" data-info="hours">[Insert Business Hours]</span></div></li>
+      </ul>
+      <div class="contact-actions">
+        <a class="btn btn-primary" data-link="facebook" href="#contact"><svg aria-hidden="true"><use href="#chat"/></svg>Message Us on Facebook</a>
+        <a class="btn btn-yellow" data-link="phone" href="#contact"><svg aria-hidden="true"><use href="#phone"/></svg>Call Now</a>
+        <a class="btn btn-ghost" data-link="facebook" href="#contact">Get a Quote</a>
+      </div>
+    </div>
+    <!-- EDIT (optional): replace this box with your Google Maps embed <iframe> -->
+    <div class="ph map-ph">
+      <div class="ph-inner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/></svg><strong>Insert Google Maps Location Here</strong><em>Optional</em></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="logo" href="#home">
+      <span class="logo-mark" aria-hidden="true"><i style="background:var(--c)"></i><i style="background:var(--m)"></i><i style="background:var(--y)"></i><i style="background:#fff"></i></span>
+      <span>Kolors Printing Services<small>Your ideas, printed in full color</small></span>
+    </a>
+    <div class="foot-links">
+      <a data-link="facebook" href="#contact"><span data-info="facebook">[Insert Facebook Page Link]</span></a>
+      <a data-link="phone" href="#contact"><span data-info="phone">[Insert Contact Number]</span></a>
+    </div>
+    <p class="copy">© 2026 Kolors Printing Services. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="btn btn-primary float-cta" href="#contact">Request a Quote</a>
+
+<script>
+/* =========================================================
+   EDIT YOUR CONTACT DETAILS HERE (one place, updates the whole page).
+   Leave a value as "" to keep showing the [Insert ...] placeholder.
+   ========================================================= */
+const KPS_INFO = {
+  address:  "",   // e.g. "123 Sample St., Your Town"
+  phone:    "",   // e.g. "0917 000 0000"
+  email:    "",   // e.g. "hello@yourshop.com"
+  facebook: "",   // full link, e.g. "https://facebook.com/yourpage"
+  hours:    ""    // e.g. "Mon–Sat, 8:00 AM – 6:00 PM"
+};
+
+(function(){
+  // Fill text placeholders
+  document.querySelectorAll("[data-info]").forEach(el=>{
+    const v = KPS_INFO[el.dataset.info];
+    if (v) el.textContent = v;
+  });
+  // Point buttons/links to the real contact once filled in
+  document.querySelectorAll("[data-link]").forEach(el=>{
+    const key = el.dataset.link, v = KPS_INFO[key];
+    if (!v) return;
+    if (key === "phone") el.href = "tel:" + v.replace(/[^\d+]/g,"");
+    else if (key === "email") el.href = "mailto:" + v;
+    else { el.href = v; el.target = "_blank"; el.rel = "noopener"; }
+  });
+  // Mobile menu
+  const header = document.querySelector(".site-header");
+  const btn = document.getElementById("menu-btn");
+  btn.addEventListener("click", ()=>{
+    const open = header.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open);
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  });
+  document.querySelectorAll("#nav-links a").forEach(a=>a.addEventListener("click", ()=>{
+    header.classList.remove("open"); btn.setAttribute("aria-expanded","false");
+  }));
+})();
+</script>
+</body>
+</html>
